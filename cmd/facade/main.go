@@ -12,15 +12,15 @@ import (
 
 func case1() facade.Computer {
 	processor := cpu.NewIntel()
-	disk := drive.NewHDD()
-	mem := memory.NewDDR1()
+	disk := drive.NewHDD(1024)
+	mem := memory.NewDDR1(256)
 	return facade.NewComputer(processor, disk, mem)
 }
 
 func case2() facade.Computer {
 	processor := cpu.NewAMD()
-	disk := drive.NewSDD()
-	mem := memory.NewDDR2()
+	disk := drive.NewSDD(2048)
+	mem := memory.NewDDR2(512)
 	return facade.NewComputer(processor, disk, mem)
 }
 

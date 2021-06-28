@@ -14,7 +14,7 @@ type Computer interface {
 type computer struct {
 	bootAddress       uint64
 	bootSectorAddress uint64
-	bootSectorSize    int
+	bootSectorSize    uint64
 	cpu               cpu.Proccessor
 	memory            memory.Memory
 	drive             drive.Drive
