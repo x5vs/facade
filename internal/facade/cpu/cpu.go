@@ -1,11 +1,13 @@
 package cpu
 
-// Proccessor interface
-type Proccessor interface {
+import "context"
+
+// CPU interface
+type CPU interface {
 	// Freeze
-	Freeze()
+	Freeze(context.Context) error
 	// Jump to address
-	Jump(uint64)
+	Jump(context.Context, uint64) error
 	// Execute command
-	Execute()
+	Execute(context.Context) error
 }

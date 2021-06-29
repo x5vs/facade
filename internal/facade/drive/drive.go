@@ -1,7 +1,9 @@
 package drive
 
+import "context"
+
 // Drive interface
 type Drive interface {
 	// Read data from address
-	Read(lba, size uint64) ([]byte, error)
+	Read(ctx context.Context, lba, size uint64) ([]byte, error)
 }

@@ -1,29 +1,35 @@
 package cpu
 
-import "fmt"
+import (
+	"context"
+	"fmt"
+)
 
-// implement Proccessor interface
+// implement CPU interface
 type amd struct {
 	pos uint64
 }
 
 // Freeze cpu
-func (a *amd) Freeze() {
+func (a *amd) Freeze(ctx context.Context) error {
 	fmt.Println("AMD freeze: ", a.pos)
+	return nil
 }
 
 // Jump to position
-func (a *amd) Jump(pos uint64) {
+func (a *amd) Jump(ctx context.Context, pos uint64) error {
 	a.pos = pos
 	fmt.Println("AMD jump: ", a.pos)
+	return nil
 }
 
 // Execute command on position
-func (a *amd) Execute() {
+func (a *amd) Execute(ctx context.Context) error {
 	fmt.Println("AMD execute: ", a.pos)
+	return nil
 }
 
-// NewAMD creat new AMD processor
-func NewAMD() Proccessor {
-	return &amd{pos: 0}
+// NewAMD create new AMD processor
+func NewAMD() CPU {
+	return &amd{}
 }

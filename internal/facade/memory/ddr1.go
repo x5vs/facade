@@ -1,6 +1,7 @@
 package memory
 
 import (
+	"context"
 	"errors"
 	"fmt"
 )
@@ -12,10 +13,10 @@ type ddr1 struct {
 }
 
 // Load data to memory
-func (d *ddr1) Load(position uint64, data []byte) error {
+func (d *ddr1) Load(ctx context.Context, position uint64, data []byte) error {
 	total := uint64(len(data))
 	if position+total > d.size {
-		return errors.New("DDR2 load error")
+		return errors.New("DDR1 load error")
 	}
 	copy(d.data[position:], data)
 	fmt.Println("DDR1 load memory:", position, data)

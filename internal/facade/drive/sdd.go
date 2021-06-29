@@ -1,7 +1,7 @@
 package drive
 
 import (
-	"crypto/rand"
+	"context"
 	"errors"
 	"fmt"
 )
@@ -13,7 +13,7 @@ type ssd struct {
 }
 
 // Read data from drive
-func (s *ssd) Read(lba, size uint64) ([]byte, error) {
+func (s *ssd) Read(ctx context.Context, lba, size uint64) ([]byte, error) {
 	if size == 0 {
 		return nil, errors.New("Invaild data size")
 	}
@@ -28,10 +28,6 @@ func (s *ssd) Read(lba, size uint64) ([]byte, error) {
 
 // NewSDD create new SSD drive
 func NewSDD(size uint64) Drive {
-	if size == 0 {
-		panic("Invalid hdd size")
-	}
 	data := make([]byte, size)
-	rand.Read(data)
 	return &ssd{size: size, data: data}
 }
